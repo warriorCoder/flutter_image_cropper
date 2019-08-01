@@ -41,6 +41,10 @@ class ImageCropper {
   /// * `toolbarTitle`: title of ActionBar of Activity in Android
   /// * `toolbarColor`: color of ActionBar of Activity in Android
   /// * `circleShape`: a parameter that controls the shape of crop frame, `true`
+  /// * `freeRangeCrop`: a parameter that let's the user resize the crop bounds,
+  ///   `true`
+  /// * `hideBottomControls`: parameter that controls the visibility of the
+  ///   bottom contolls, `false`
   /// value makes crop frame a circle shape, rectangle shape in otherwise. The
   /// default value is `false`
   ///
@@ -60,6 +64,8 @@ class ImageCropper {
     Color toolbarColor,
     Color statusBarColor,
     Color toolbarWidgetColor,
+    bool enableFreeRange: true,
+    bool hideBottomControls: false,
   }) async {
     assert(sourcePath != null);
 
@@ -83,6 +89,8 @@ class ImageCropper {
       'toolbar_color': toolbarColor?.value,
       'statusbar_color': statusBarColor?.value,
       'toolbar_widget_color': toolbarWidgetColor?.value,
+      'enable_free_range': enableFreeRange,
+      'hide_bottom_controls': hideBottomControls,
     });
     return resultPath == null ? null : new File(resultPath);
   }
